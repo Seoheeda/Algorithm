@@ -8,7 +8,6 @@ for _ in range(n):
     a = int(input())
     coins.append(a)
 
-sum = 0
 cnt = 0
 i = n - 1
 while k > 0:
@@ -16,7 +15,6 @@ while k > 0:
         c = k // coins[i] 
         s = coins[i] * c  
         cnt += c
-        sum += s
         k -= s
     i -= 1
 
