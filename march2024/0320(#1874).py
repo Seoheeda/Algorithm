@@ -8,15 +8,17 @@ ans = []
 go = True
 
 for _ in range(n) :
-    data = int(input())
-    while count <= data :
+    num = int(input())
+    # num 이하 숫자까지 스택에 push
+    while count <= num :
         stack.append(count)
         ans.append('+')
         count += 1
-
-    if stack[-1] == data :
+    # num이랑 스택 맨 위 숫자가 동일하면 pop
+    if stack[-1] == num :
         stack.pop()
         ans.append('-')
+    # 스택 수열 만들기 불가
     else :
         go = False
 
