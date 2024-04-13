@@ -14,4 +14,4 @@ def gcd(x, y):
 
 gcdnum = gcd(up, down)
 
-print(int(up / gcdnum), int(n / gcdnum))
+print(int(up / gcdnum), int(down / gcdnum))
