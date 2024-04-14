@@ -27,7 +27,6 @@ for num in nums:
 
 often = max(cnt.values())
 often_nums = []
-print("often", often)
 
 for i in cnt:
     if cnt[i] == often:
