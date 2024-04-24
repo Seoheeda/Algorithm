@@ -1,7 +1,7 @@
 import sys
 input = sys.stdin.readline
 
-while True:
+while True:  # 입력 개수 무한대 가능. 빈 입력 시 입력 종료
     try:
         n = int(input()) 
     except:

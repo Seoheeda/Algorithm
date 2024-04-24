@@ -7,7 +7,7 @@ c, d = map(int, input().split())
 down = b * d
 up = (a * d) + (c * b)
 
-def gcd(x, y):
+def gcd(x, y):  # 최대공약수 구하는 함수
     while y > 0:
         x, y = y, x % y
     return x
