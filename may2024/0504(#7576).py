@@ -22,7 +22,7 @@ for i in range(n):
             good.append((i, j, 0))
 
 ''' good
-[[3, 5, 1]]
+[[3, 5, 1]] 
 '''
 cnt = 0
 while good:
