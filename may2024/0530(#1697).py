@@ -20,7 +20,7 @@ def bfs(s):
         if n == k:
             return visited[n]
         
-        for i in [n - 1, n + 1, 2 * n]:
+        for i in [n - 1, n + 1, 2 * n]:  # 뒤로 걷기, 앞으로 걷기, 순간이동
             if 0 <= i <= 100000 and visited[i] == 0:
                 visited[i] = visited[n] + 1
                 q.append(i)
