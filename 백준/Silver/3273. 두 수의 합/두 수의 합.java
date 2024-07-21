@@ -1,6 +1,4 @@
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -11,12 +9,12 @@ public class Main {
 	
 	int n = sc.nextInt();
 	
-	List<Integer> list = new ArrayList<>();
+	int[] arr = new int[n];
 	
 	for (int i = 0; i < n; i++) {
-		list.add(sc.nextInt());
+		arr[i] = sc.nextInt();
 	}
-	list.sort(Comparator.naturalOrder());
+	Arrays.parallelSort(arr);
 	
 	int x = sc.nextInt();
 	int cnt = 0;
@@ -25,7 +23,7 @@ public class Main {
 	int sum = 0;
 		
 	while (start < end) {
-		sum = list.get(start) + list.get(end);
+		sum = arr[start] + arr[end];
 		if (sum == x) {
 			cnt++;
 			start++;
