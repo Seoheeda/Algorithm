@@ -3,16 +3,15 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
 public class Main {
 	
-	private static int[] visited1;
-	private static int[] visited2;
-	private static int[][] graph;
+	static int[] visited1;
+	static int[] visited2;
+	static int[][] graph;
 	static StringBuilder sb1 = new StringBuilder();
 	static StringBuilder sb2 = new StringBuilder();
 	static int n;
