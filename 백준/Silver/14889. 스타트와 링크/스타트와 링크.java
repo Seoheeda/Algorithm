@@ -51,7 +51,7 @@ public class Main {
             }
             
 
-                        if (Math.abs(start - link) < min) {
+            if (Math.abs(start - link) < min) {
                 min = Math.abs(start - link);
             }
 
