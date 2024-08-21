@@ -1,20 +1,20 @@
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public class Solution {
 	
 	static int[] isSelected;
+	static int[][] film;
 	static int[][] film2;
 	static int D;
 	static int W;
 	static int K;
 	static int min;
 	
-	public static void dfs(int cnt, int[][] film, int ans) {
+	public static void dfs(int cnt, int ans) {
 		
-    	if (check(film, W, D, K) == true && min > ans) {
+    	if (check() == true && min > ans) {
     		min = ans;
         	return;
     	}
@@ -27,43 +27,43 @@ public class Solution {
 			return;
 		}
 		
-		film = change0(cnt, film);
-        dfs(cnt + 1, film, ans + 1);
+		film = change0(cnt);
+        dfs(cnt + 1, ans + 1);
 		
         for (int i = 0; i < W; i++) {
         	film[cnt][i] = film2[cnt][i];
         }
         
          
-		film = change1(cnt, film);
-        dfs(cnt + 1, film, ans + 1);
+		film = change1(cnt);
+        dfs(cnt + 1, ans + 1);
 		
         for (int i = 0; i < W; i++) {
         	film[cnt][i] = film2[cnt][i];
         }
         
-        dfs(cnt + 1, film, ans);
+        dfs(cnt + 1, ans);
     }
 	
-	public static int[][] change0(int row, int[][] film2) {
+	public static int[][] change0(int row) {
 		
 		for (int i = 0; i < W; i++) {
-			film2[row][i] = 0;
+			film[row][i] = 0;
 		}
 		
-		return film2;
+		return film;
 	}
 	
-	public static int[][] change1(int row, int[][] film2) {
+	public static int[][] change1(int row) {
 		
 		for (int i = 0; i < W; i++) {
-			film2[row][i] = 1;
+			film[row][i] = 1;
 		}
 		
-		return film2;
+		return film;
 	}
 	
-	public static boolean check(int[][] film, int W, int D, int K) {
+	public static boolean check() {
 		
 		boolean[] checked = new boolean[W];
 		
@@ -113,7 +113,7 @@ public class Solution {
     		// 합격 기준
     		K = Integer.parseInt(st1.nextToken());
     		
-    		int[][] film = new int[D][W];
+    		film = new int[D][W];
     		
     		for (int i = 0; i < D; i++) {
     			StringTokenizer st2 = new StringTokenizer(br.readLine());
@@ -133,11 +133,9 @@ public class Solution {
     		if (K == 1) {
         		System.out.println("#" + t + " " + 0);
     		} else {
-	    		dfs(0, film, 0);
+	    		dfs(0, 0);
 	    		System.out.println("#" + t + " " + min);
-    		}
-    		
+    		}	
     	}
-    	
     }
 }
