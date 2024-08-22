@@ -11,15 +11,6 @@ public class Main {
 	static int cnt;
 	static int[] dx = {-1, 0, 1};
 	
-	public static void print() {
-		for (int i = 0; i < R; i++) {
-			for (int j = 0; j < C; j++) {
-				System.out.print(arr[i][j]);
-			}
-			System.out.println();
-		}
-	}
-	
 	public static boolean dfs(int x, int y) {
 				
 		if (y == C - 1) {
@@ -36,7 +27,6 @@ public class Main {
 				 if (dfs(nx, ny)) {
 		                return true; 
 				 }
-				dfs(nx, ny);
 			}
 		}
 		
