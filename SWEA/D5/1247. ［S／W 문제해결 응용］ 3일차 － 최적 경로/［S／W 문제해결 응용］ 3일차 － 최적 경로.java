@@ -43,6 +43,9 @@ public class Solution {
 			sum += Math.abs(cy - cust[arr[i]][1]);
 			cx = cust[arr[i]][0];
 			cy = cust[arr[i]][1];
+			if (sum >= min) {
+				return Integer.MAX_VALUE;
+			}
 		}
 		
 		sum += Math.abs(cx - homeX);
