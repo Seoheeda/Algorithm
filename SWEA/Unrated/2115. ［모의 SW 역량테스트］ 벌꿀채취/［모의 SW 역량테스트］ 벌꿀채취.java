@@ -24,6 +24,9 @@ public class Solution {
    
             for (int a = 0; a < M; a++) {
                 add += (arr[a] * hive[i][j + a]);
+                if (add > C) {
+                	return;
+                }
             }
             // C 이하일 경우에만 계산하기
             if (add <= C) {
@@ -46,16 +49,17 @@ public class Solution {
     static int[] arr2;
     static boolean[] visited;
     static int max;
+    static int x1, x2, y1, y2, c1, c2;
     
     // M칸으로 가능한 모든 경우의 수 중, 가능한 조합만 뽑아서 최댓값 갱신하기
     private static void comb2(int depth, int start) {
 		if (depth == 2) {
-			int x1 = combs.get(arr2[0])[0];
-			int y1 = combs.get(arr2[0])[1];
-			int c1 = combs.get(arr2[0])[2];
-			int x2 = combs.get(arr2[1])[0];
-			int y2 = combs.get(arr2[1])[1];
-			int c2 = combs.get(arr2[1])[2];
+			x1 = combs.get(arr2[0])[0];
+			y1 = combs.get(arr2[0])[1];
+			c1 = combs.get(arr2[0])[2];
+			x2 = combs.get(arr2[1])[0];
+			y2 = combs.get(arr2[1])[1];
+			c2 = combs.get(arr2[1])[2];
 			
 			// 겹치는 경우 제외
 			if (x1 == x2 && Math.abs(y1 - y2) < M) {
