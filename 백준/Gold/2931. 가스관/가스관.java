@@ -235,12 +235,6 @@ public class Main {
 		
 		System.out.println((X + 1) + " " + (Y + 1) + " " + ans);
 
-/*
-3 5
-..1-M
-1.+4.
-Z.23. 
-*/
 		
 	}
 
