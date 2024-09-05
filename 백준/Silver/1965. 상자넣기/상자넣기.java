@@ -23,16 +23,18 @@ public class Main {
         	dp[i] = 1;
         }
         
+        int ans = 0;
+        
         for (int i = n - 1; i >= 0; i--) {
         	for (int j = i - 1; j >= 0; j--) {
         		if (nums[i] > nums[j] && dp[j] <= dp[i]) {
         			dp[j] = dp[i] + 1;
         		}
+        		ans = Integer.max(ans, dp[j]);
         	}
         }
 
         // 최댓값
-        int ans = Arrays.stream(dp).max().getAsInt();
         System.out.println(ans);
         
     }
