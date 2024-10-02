@@ -32,28 +32,17 @@ public class Main {
     	String origin = br.readLine();
     	String sec = br.readLine();
     	
-    	int[] original = new int[origin.length()];
-    	int[] secrete = new int[sec.length()];
-    	
-    	for (int i = 0; i < origin.length(); i++) {
-    		original[i] = origin.charAt(i) - 64;
-    	}
-    	
-    	for (int i = 0; i < sec.length(); i++) {
-    		secrete[i] = sec.charAt(i) - 64;
-    	}
-    	
     	// 평문과 암호문을 이용하여 키의 반복 문자열 만들기
-    	String key = "";
+    	StringBuilder key = new StringBuilder();
     	for (int i = 0; i < origin.length(); i++) {
-    		char a = (char) ((char) secrete[i] - original[i] + 64);
+    		char a = (char) (sec.charAt(i) - origin.charAt(i) + 64);
     		if (a<= 64) {
     			a += 26;
     		}
-    		key += a;
+    		key.append(a);
     	}
     	
-    	find(key);
+    	find(key.toString());
     	
     }
 }
