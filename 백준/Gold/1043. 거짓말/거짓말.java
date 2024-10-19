@@ -80,13 +80,6 @@ public class Main {
 			}
 		}
 		
-		// 진실 아는 사람들끼리 유니온
-		for (int i = 0; i < C; i++) {
-			for (int j = i + 1; j < C; j++) {
-				union(truth[i], truth[j]);
-			}
-		}
-		
 		// 같은 파티 참석한 사람들끼리 유니온
 		for (int i = 0; i < M; i++) {
 			if (parties[i].size() >= 2) {
