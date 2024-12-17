@@ -1,42 +1,55 @@
-import java.io.*;
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.ArrayDeque;
+import java.util.Queue;
+import java.util.StringTokenizer;
 
 public class Main {
-    static int n, k;
-    static int[] visited = new int[100001]; // 방문 여부 및 시간 기록 배열
-    
-    public static void main(String[] args) throws IOException {
+	
+	static int N, K;
+	static Queue<Integer> queue;
+	static int[] visited;
+	
+	static void bfs() {
+		while(!queue.isEmpty()) {
+			int place = queue.poll();
+			
+			if (place == K) {
+				return;
+			}
+			
+			if (place - 1 >= 0 && visited[place - 1] == 0) {
+				queue.add(place - 1);
+				visited[place - 1] = visited[place] + 1;
+			}
+			if (place + 1 <= 100000 && visited[place + 1] == 0) {
+				queue.add(place + 1);
+				visited[place + 1] = visited[place] + 1;
+			}
+			if (place * 2 <= 100000 && visited[place * 2] == 0) {
+				queue.add(place * 2);
+				visited[place * 2] = visited[place] + 1;
+			}
+		}	
+		return;
+	}
+	
+    public static void main(String[] args) throws Exception {
+    	
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        
         StringTokenizer st = new StringTokenizer(br.readLine());
+        // 수빈이 위치 N, 동생 위치 K
+        N = Integer.parseInt(st.nextToken());
+        K = Integer.parseInt(st.nextToken());
         
-        n = Integer.parseInt(st.nextToken()); // 수빈이 위치
-        k = Integer.parseInt(st.nextToken()); // 동생 위치
+        queue = new ArrayDeque<Integer>();
+        queue.add(N);
         
-        System.out.println(bfs(n));
-    }
-    
-    static int bfs(int start) {
-        Queue<Integer> q = new LinkedList<>();
-        q.add(start); // 시작 위치 큐에 삽입
-        visited[start] = 1; // 시작 위치 방문 처리 (1부터 시작)
+        visited = new int[100001];
         
-        while (!q.isEmpty()) {
-            int current = q.poll();
-            
-            if (current == k) {
-                return visited[current] - 1; // 시작 위치를 1로 설정했으므로 결과에 -1 필요
-            }
-            
-            // 이동할 수 있는 3가지 경우
-            int[] nextPositions = {current - 1, current + 1, current * 2};
-            
-            for (int next : nextPositions) {
-                if (next >= 0 && next <= 100000 && visited[next] == 0) {
-                    visited[next] = visited[current] + 1; // 시간 증가
-                    q.add(next);
-                }
-            }
-        }
-        return -1; // 도달할 수 없는 경우 (문제 조건상 발생하지 않음)
+        bfs();
+        
+        System.out.println(visited[K]);        
     }
 }
