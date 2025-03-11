@@ -5,20 +5,6 @@ public class Main {
 	
 	static int N, S;
 	static int[] nums;
-	
-	static int find() {
-		int gap = 1;
-		while (true) {
-			for (int i = gap; i < N; i++) {
-				int temp = nums[i] - nums[i - gap];
-				
-				if (temp >= S) {
-					return gap;
-				}
-			}
-			gap++;
-		}
-	}
 
 	public static void main(String[] args) throws Exception {
 		
