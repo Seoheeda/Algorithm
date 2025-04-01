@@ -8,7 +8,6 @@ public class Main {
 	static char[][] arr;
 	static boolean[][] visited;
 	
-	// 배열 범위 안에 있는가
 	static boolean isIn(int x, int y) {
 		if (x >= 0 && x < 12 && y >= 0 && y < 6) {
 			return true;
@@ -16,7 +15,6 @@ public class Main {
 		return false;
 	}
 	
-	// 연결된 같은 색 뿌요들 처리
 	static int bfs(int x, int y) {
 		
 		// bfs 위한 큐
@@ -24,7 +22,6 @@ public class Main {
 		queue.add(new int[] {x, y});
 		visited[x][y] = true;
 		
-		// 연결 정보 저장 리스트
 		ArrayList<int[]> list = new ArrayList<int[]>();
 		list.add(new int[] {x, y});
 		
@@ -35,7 +32,6 @@ public class Main {
 				int nx = temp[0] + dx[d];
 				int ny = temp[1] + dy[d];
 				
-				// 범위 안에 있고, 최초 뿌요와 같은 색이고, 방문 전이면
 				if (isIn(nx, ny) && arr[x][y] == arr[nx][ny] && !visited[nx][ny]) {
 					queue.add(new int[] {nx, ny});
 					visited[nx][ny] = true;
@@ -44,7 +40,6 @@ public class Main {
 			}
 		}
 		
-		// 연결 정보가 4 이상이면 => 연쇄 가능
 		if (list.size() >= 4) {
 			for (int i = 0; i < list.size(); i++) {
 				int[] temp = list.get(i);
@@ -52,11 +47,9 @@ public class Main {
 			}
 		}
 		
-		// 연결 정보 리턴 (4 이상이면 연쇄 일어났다는 뜻)
 		return list.size();
 	}
 	
-	// 중력 작용
 	static void goDown() {
 		for (int j = 0; j < 6; j++) {
 			ArrayList<Character> list = new ArrayList<Character>();
@@ -90,12 +83,10 @@ public class Main {
 			}
 		}
 		
-		// 정답 (연쇄 횟수)
 		int ans = 0;
 		
 		while (true) {
 			visited = new boolean[12][6];
-			// 연쇄 일어났는지 여부
 			boolean puyoPuyo = false;
 			
 			for (int i = 0; i < 12; i++) {
@@ -109,7 +100,6 @@ public class Main {
 				}
 			}
 			
-			// 연쇄 없었으면 그만, 있었으면 연쇄 횟수 증가
 			if (!puyoPuyo ) {
 				break;
 			} else {
