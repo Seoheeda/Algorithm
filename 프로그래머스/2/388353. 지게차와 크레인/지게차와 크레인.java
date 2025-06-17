@@ -9,6 +9,7 @@ class Solution {
     static int[] dx = {0, 0, -1, 1};
     static int[] dy = {-1, 1, 0, 0};
     
+    // 범위 내부인지 여부
     static boolean isIn(int x, int y) {
         if (x >= 0 && x < N && y >= 0 && y < M) {
             return true;
@@ -16,8 +17,10 @@ class Solution {
         return false;
     }
     
+    // 지게차
     static void check(int x, int y, String request) {
         
+        // 비어있지 않으면 탐색 종료
         if (!isEmpty[x][y]) {
             if (arr[x][y] == request.charAt(0)) {
                 isEmpty[x][y] = true;
@@ -41,10 +44,13 @@ class Solution {
                 int nx = cx + dx[d];
                 int ny = cy + dy[d];
 
+                 // 비어있으면 큐에 넣기
                 if (isIn(nx, ny) && !visited[nx][ny] && isEmpty[nx][ny]) {
                     queue.add(new int[] {nx, ny});
                     visited[nx][ny] = true;
+                // 비어있지 않으면 큐에 넣지 않음
                 } else if (isIn(nx, ny) && !visited[nx][ny] && !isEmpty[nx][ny]) {
+                    // 출고 요청과 같으면 비우기
                     if (arr[nx][ny] == request.charAt(0)) {
                         isEmpty[nx][ny] = true;
                     }
@@ -80,8 +86,8 @@ class Solution {
                 
                 visited = new boolean[N][M];
                 
+                // 세로 테두리 돌기
                 for (int a = 0; a < N; a++) {
-                    System.out.println(a + " " + 0);
                     if (!visited[a][0]) {
                         check(a, 0, request);
                     }
@@ -90,6 +96,8 @@ class Solution {
                         check(a, M - 1, request);
                     }
                 }
+                
+                // 가로 테두리 돌기
                 for (int a = 1; a < M - 1; a++) {
                     System.out.println(0 + " " + a);
                     if (!visited[0][a]) {
@@ -113,12 +121,9 @@ class Solution {
             }
         }
         
-        for (int a = 0; a < N; a++) {
-            System.out.println(Arrays.toString(isEmpty[a]));
-        }
-        
         int answer = 0;
         
+        // 개수 세기
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < M; j++) {
                 if (!isEmpty[i][j]) {
