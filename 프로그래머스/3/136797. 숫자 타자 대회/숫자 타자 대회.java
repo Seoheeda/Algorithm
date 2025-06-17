@@ -18,19 +18,32 @@ class Solution {
         { 3, 6, 5, 4, 5, 3, 2, 4, 2, 1 }
     };
     
-    static int dfs(int ind, int L, int R) {
-        if (ind == len) return 0;
-        if (dp[ind][L][R] != -1) return dp[ind][L][R];
-
-        int num = nums.charAt(ind) - '0';
+    static int dfs(int index, int L, int R) {
+        
+        // 다 눌렀으면
+        if (index == len) {
+            return 0;
+        }
+        
+        // 이미 계산 됐으면
+        if (dp[index][L][R] != -1) {
+            return dp[index][L][R];
+        }
+        
+        // 누를 숫자
+        int num = nums.charAt(index) - '0';
         int result = Integer.MAX_VALUE;
-
+        
+        // 왼손으로 누르기
         if (num != R)
-            result = Math.min(dfs(ind + 1, num, R) + dist[L][num], result);
+            result = Math.min(dfs(index + 1, num, R) + dist[L][num], result);
+        
+        // 오른손으로 누르기
         if (num != L)
-            result = Math.min(dfs(ind + 1, L, num) + dist[R][num], result);
+            result = Math.min(dfs(index + 1, L, num) + dist[R][num], result);
 
-        return dp[ind][L][R] = result;
+        // 최소 비용 저장
+        return dp[index][L][R] = result;
     }
     
     public int solution(String numbers) {
@@ -40,6 +53,7 @@ class Solution {
         len = nums.length();
         dp = new int[len + 1][10][10];
         
+        // -1이면 아직 계산 안됨
         for (int i = 0; i <= len; i++) {
             for (int j = 0; j < 10; j++) {
                 for (int k = 0; k < 10; k++) {
@@ -50,6 +64,7 @@ class Solution {
         
         int answer = 0;
        
+        // 왼손 4, 오른손 6,
         answer = dfs(0, 4, 6);
         
         return answer;
