@@ -31,11 +31,9 @@ class Solution {
             queue.add(new Route(routes[i][0], routes[i][1]));
         }
         
-        // 카메라 위치 범위
+        // 카메라 위치
         int camera = Integer.MIN_VALUE;
         
-        // 새로운 범위 설정해야 하는지 여부
-        boolean isNewRange = false;
         
         for (int i = 0; i < N; i++) {
             Route route = queue.poll();
