@@ -40,7 +40,9 @@ class Solution {
             map = new HashMap<>();
 
             for (int i = 0; i < robotCnt; i++) {
-                if (isFinished[i]) continue;
+                if (isFinished[i]) {
+                    continue;
+                }
 
                 int[] cur = curPos[i];
                 int curIdx = routes[i][pathIdx[i] - 1] - 1;
@@ -49,9 +51,17 @@ class Solution {
 
                 // 이동
                 if (cur[0] != target[0]) {
-                    cur[0] += (cur[0] < target[0]) ? 1 : -1;
+                    if (cur[0] < target[0]) {
+                        cur[0]++;
+                    } else {
+                        cur[0]--;
+                    }
                 } else if (cur[1] != target[1]) {
-                    cur[1] += (cur[1] < target[1]) ? 1 : -1;
+                    if (cur[1] < target[1]) {
+                        cur[1]++;
+                    } else {
+                        cur[1]--;
+                    }
                 }
 
                 // 위치 갱신
