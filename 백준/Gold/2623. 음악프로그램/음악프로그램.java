@@ -78,13 +78,16 @@ public class Main {
 		sort();
 		
 		// 정답 출력
+		StringBuilder sb = new StringBuilder();
 		
 		if (list.size() == N) {
 			for (int i = 0; i < N; i++) {
-				System.out.println(list.get(i));
+				sb.append(list.get(i)).append("\n");;
 			}
 		} else {
 			System.out.println(0);
 		}
+		
+		System.out.println(sb);
 	}
 }
